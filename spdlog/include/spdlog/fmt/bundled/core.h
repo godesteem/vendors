@@ -732,10 +732,13 @@ FMT_TYPE_CONSTANT(const Char*, cstring_type);
 FMT_TYPE_CONSTANT(basic_string_view<Char>, string_type);
 FMT_TYPE_CONSTANT(const void*, pointer_type);
 
+#pragma warning( push )
+#pragma warning( disable : 26812 )
 FMT_CONSTEXPR bool is_integral_type(type t) {
   FMT_ASSERT(t != named_arg_type, "invalid argument type");
   return t > none_type && t <= last_integer_type;
 }
+#pragma warning( pop )
 
 FMT_CONSTEXPR bool is_arithmetic_type(type t) {
   FMT_ASSERT(t != named_arg_type, "invalid argument type");

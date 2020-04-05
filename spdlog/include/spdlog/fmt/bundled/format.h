@@ -465,6 +465,8 @@ inline size_t count_code_points(basic_string_view<Char> s) {
   return s.size();
 }
 
+#pragma warning( push )
+#pragma warning( disable : 26812 )
 // Counts the number of code points in a UTF-8 string.
 inline size_t count_code_points(basic_string_view<char8_t> s) {
   const char8_t* data = s.data();
@@ -474,6 +476,7 @@ inline size_t count_code_points(basic_string_view<char8_t> s) {
   }
   return num_code_points;
 }
+#pragma warning( pop )
 
 template <typename Char>
 inline size_t code_point_index(basic_string_view<Char> s, size_t n) {
@@ -1055,6 +1058,8 @@ struct float_specs {
   bool trailing_zeros : 1;
 };
 
+#pragma warning( push )
+#pragma warning( disable : 26451 )
 // Writes the exponent exp in the form "[+-]d{2,3}" to buffer.
 template <typename Char, typename It> It write_exponent(int exp, It it) {
   FMT_ASSERT(-10000 < exp && exp < 10000, "exponent out of range");
@@ -1075,6 +1080,7 @@ template <typename Char, typename It> It write_exponent(int exp, It it) {
   *it++ = static_cast<Char>(d[1]);
   return it;
 }
+#pragma warning( pop )
 
 template <typename Char> class float_writer {
  private:
@@ -1455,6 +1461,8 @@ template <typename Range> class basic_writer {
 
     string_view get_prefix() const { return string_view(prefix, prefix_size); }
 
+#pragma warning( push )
+#pragma warning( disable : 26495 )
     int_writer(basic_writer<Range>& w, Int value, const Specs& s)
         : writer(w),
           specs(s),
@@ -1469,6 +1477,7 @@ template <typename Range> class basic_writer {
         ++prefix_size;
       }
     }
+#pragma warning( pop )
 
     struct dec_writer {
       unsigned_type abs_value;
@@ -1605,6 +1614,8 @@ template <typename Range> class basic_writer {
     }
   };
 
+#pragma warning( push )
+#pragma warning( disable : 26451 )
   template <typename UIntPtr> struct pointer_writer {
     UIntPtr value;
     int num_digits;
@@ -1618,6 +1629,7 @@ template <typename Range> class basic_writer {
       it = format_uint<4, char_type>(it, value, num_digits);
     }
   };
+#pragma warning( pop )
 
  public:
   explicit basic_writer(Range out, locale_ref loc = locale_ref())

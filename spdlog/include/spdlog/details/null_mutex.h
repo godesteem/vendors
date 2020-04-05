@@ -28,10 +28,13 @@ struct null_atomic_int
         : value(new_value)
     {}
 
+#pragma warning( push )
+#pragma warning( disable : 26812 )
     int load(std::memory_order = std::memory_order_relaxed) const
     {
         return value;
     }
+#pragma warning( pop )
 
     void store(int new_value, std::memory_order = std::memory_order_relaxed)
     {
