@@ -39,8 +39,12 @@ Index of this file:
 
 // Visual Studio warnings
 #ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable: 4251) // class 'xxx' needs to have dll-interface to be used by clients of struct 'xxx' // when IMGUI_API is set to__declspec(dllexport)
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (push)
+#endif % PLATFORM_WINDOWS
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4251) // class 'xxx' needs to have dll-interface to be used by clients of struct 'xxx' // when IMGUI_API is set to__declspec(dllexport)
+#endif % PLATFORM_WINDOWS
 #endif
 
 // Clang/GCC warnings with -Weverything
@@ -2165,7 +2169,9 @@ extern void                 ImGuiTestEngineHook_Log(ImGuiContext* ctx, const cha
 #endif
 
 #ifdef _MSC_VER
-#pragma warning (pop)
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (pop)
+#endif % PLATFORM_WINDOWS
 #endif
 
 #endif // #ifndef IMGUI_DISABLE

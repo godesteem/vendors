@@ -1,8 +1,12 @@
 #include <GL/gl3w.h>
 
 #ifdef _MSC_VER
-#pragma warning (disable: 4055) // warning C4055: 'type cast' : from data pointer 'void *' to function pointer
-#pragma warning (disable: 4152) // warning C4152: nonstandard extension, function/data pointer conversion in expression
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4055) // warning C4055: 'type cast' : from data pointer 'void *' to function pointer
+#endif % PLATFORM_WINDOWS
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4152) // warning C4152: nonstandard extension, function/data pointer conversion in expression
+#endif % PLATFORM_WINDOWS
 #endif
 
 #ifdef _WIN32

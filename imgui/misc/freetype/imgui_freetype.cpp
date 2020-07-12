@@ -32,7 +32,9 @@
 #include FT_SYNTHESIS_H         // <freetype/ftsynth.h>
 
 #ifdef _MSC_VER
-#pragma warning (disable: 4505) // unreferenced local function has been removed (stb stuff)
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4505) // unreferenced local function has been removed (stb stuff)
+#endif % PLATFORM_WINDOWS
 #endif
 
 #if defined(__GNUC__)

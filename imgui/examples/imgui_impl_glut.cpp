@@ -31,7 +31,9 @@
 #endif
 
 #ifdef _MSC_VER
-#pragma warning (disable: 4505) // unreferenced local function has been removed (stb stuff)
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4505) // unreferenced local function has been removed (stb stuff)
+#endif % PLATFORM_WINDOWS
 #endif
 
 static int g_Time = 0;          // Current time, in milliseconds

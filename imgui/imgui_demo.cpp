@@ -80,7 +80,9 @@ Index of this file:
 #endif
 
 #ifdef _MSC_VER
-#pragma warning (disable: 4996) // 'This function or variable may be unsafe': strcpy, strdup, sprintf, vsnprintf, sscanf, fopen
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4996) // 'This function or variable may be unsafe': strcpy, strdup, sprintf, vsnprintf, sscanf, fopen
+#endif % PLATFORM_WINDOWS
 #endif
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wold-style-cast"             // warning : use of old-style cast                              // yes, they are more terse.

@@ -46,7 +46,9 @@
 
 // Visual Studio warnings
 #ifdef _MSC_VER
-#pragma warning (disable: 4127) // condition expression is constant
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4127) // condition expression is constant
+#endif % PLATFORM_WINDOWS
 #endif
 
 // Data

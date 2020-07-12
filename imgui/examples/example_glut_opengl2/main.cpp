@@ -15,7 +15,9 @@
 #endif
 
 #ifdef _MSC_VER
-#pragma warning (disable: 4505) // unreferenced local function has been removed
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4505) // unreferenced local function has been removed
+#endif % PLATFORM_WINDOWS
 #endif
 
 // Our state

@@ -50,9 +50,15 @@ Index of this file:
 
 // Visual Studio warnings
 #ifdef _MSC_VER
-#pragma warning (disable: 4127) // condition expression is constant
-#pragma warning (disable: 4505) // unreferenced local function has been removed (stb stuff)
-#pragma warning (disable: 4996) // 'This function or variable may be unsafe': strcpy, strdup, sprintf, vsnprintf, sscanf, fopen
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4127) // condition expression is constant
+#endif % PLATFORM_WINDOWS
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4505) // unreferenced local function has been removed (stb stuff)
+#endif % PLATFORM_WINDOWS
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4996) // 'This function or variable may be unsafe': strcpy, strdup, sprintf, vsnprintf, sscanf, fopen
+#endif % PLATFORM_WINDOWS
 #endif
 
 // Clang/GCC warnings with -Weverything
@@ -99,8 +105,12 @@ namespace IMGUI_STB_NAMESPACE
 #endif
 
 #ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable: 4456)                             // declaration of 'xx' hides previous local declaration
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (push)
+#endif % PLATFORM_WINDOWS
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (disable: 4456)                             // declaration of 'xx' hides previous local declaration
+#endif % PLATFORM_WINDOWS
 #endif
 
 #if defined(__clang__)
@@ -163,7 +173,9 @@ namespace IMGUI_STB_NAMESPACE
 #endif
 
 #if defined(_MSC_VER)
-#pragma warning (pop)
+#ifdef PLATFORM_WINDOWS
+    #pragma warning (pop)
+#endif % PLATFORM_WINDOWS
 #endif
 
 #ifdef IMGUI_STB_NAMESPACE
