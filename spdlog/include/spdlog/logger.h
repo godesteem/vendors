@@ -147,8 +147,10 @@ public:
         log(loc, lvl, string_view_t{msg});
     }
 
-#pragma warning( push )
-#pragma warning( disable : 26812 )
+#ifdef PLATFORM_WINDOWS
+    #pragma warning( push )
+    #pragma warning( disable : 26812 )
+#endif // PLATFORM_WINDOWS
     void log(source_loc loc, level::level_enum lvl, string_view_t msg)
     {
         bool log_enabled = should_log(lvl);
@@ -161,7 +163,9 @@ public:
         details::log_msg log_msg(loc, name_, lvl, msg);
         log_it_(log_msg, log_enabled, traceback_enabled);
     }
-#pragma warning( pop )
+#ifdef PLATFORM_WINDOWS
+    #pragma warning( pop )
+#endif // PLATFORM_WINDOWS
 
     void log(level::level_enum lvl, string_view_t msg)
     {

@@ -28,13 +28,17 @@ struct null_atomic_int
         : value(new_value)
     {}
 
-#pragma warning( push )
-#pragma warning( disable : 26812 )
+#ifdef PLATFORM_WINDOWS
+    #pragma warning( push )
+    #pragma warning( disable : 26812 )
+#endif // PLATFORM_WINDOWS
     int load(std::memory_order = std::memory_order_relaxed) const
     {
         return value;
     }
-#pragma warning( pop )
+#ifdef PLATFORM_WINDOWS
+    #pragma warning( pop )
+#endif // PLATFORM_WINDOWS
 
     void store(int new_value, std::memory_order = std::memory_order_relaxed)
     {
