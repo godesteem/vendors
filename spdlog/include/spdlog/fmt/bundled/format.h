@@ -1028,6 +1028,8 @@ template <typename Char> struct basic_format_specs {
   bool alt : 1;  // Alternate form ('#').
   internal::fill_t<Char> fill;
 
+#pragma warning( push )
+#pragma warning( disable : 26812 )
   constexpr basic_format_specs()
       : width(0),
         precision(-1),
@@ -1037,6 +1039,7 @@ template <typename Char> struct basic_format_specs {
         alt(false),
         fill(internal::fill_t<Char>::make()) {}
 };
+#pragma warning( pop )
 
 using format_specs = basic_format_specs<char>;
 
@@ -1790,7 +1793,10 @@ template <typename Range> class basic_writer {
   void write_pointer(UIntPtr value, const format_specs* specs) {
     int num_digits = count_digits<4>(value);
     auto pw = pointer_writer<UIntPtr>{value, num_digits};
+#pragma warning( push )
+#pragma warning( disable : 26451 )
     if (!specs) return pw(reserve(to_unsigned(num_digits) + 2));
+#pragma warning( pop )
     format_specs specs_copy = *specs;
     if (specs_copy.align == align::none) specs_copy.align = align::right;
     write_padded(specs_copy, pw);
