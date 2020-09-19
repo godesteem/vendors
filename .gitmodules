@@ -1,3 +1,6 @@
 [submodule "assimp"]
 	path = assimp
 	url = github:godesteem/assimp
+[submodule "imgui"]
+	path = imgui
+	url = github:/godesteem/imgui
