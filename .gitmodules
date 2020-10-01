@@ -4,3 +4,6 @@
 [submodule "imgui"]
 	path = imgui
 	url = github:/godesteem/imgui
+[submodule "ECS"]
+	path = ECS
+	url = github:/philsupertramp/ECS
