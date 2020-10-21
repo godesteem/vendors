@@ -11,13 +11,7 @@
 #include <memory> // unique_ptr
 #include <ctime> // time for random seed
 
-#if defined(__clang__) // Couldn't find one for clang
-#define FORCE_INLINE inline
-#elif defined(__GNUC__) || defined(__GNUG__)
-#define FORCE_INLINE __attribute__((always_inline))
-#elif defined(_MSC_VER)
-#define FORCE_INLINE __forceinline
-#endif
+#define FORCE_INLINE
 
 class OpenSimplexNoise
 {

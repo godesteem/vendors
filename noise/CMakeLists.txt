@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-add_library(noise STATIC
+add_library(noise SHARED
     ${CMAKE_CURRENT_SOURCE_DIR}/OpenSimplexNoise.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/OpenSimplexNoise.h
 )
