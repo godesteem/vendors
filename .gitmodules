@@ -7,3 +7,6 @@
 [submodule "ECS"]
 	path = ECS
 	url = github:/philsupertramp/ECS
+[submodule "math"]
+	path = math
+	url = github:philsupertramp/game-math
